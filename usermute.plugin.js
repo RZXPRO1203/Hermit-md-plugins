@@ -16,6 +16,11 @@ Function({
     return;
   }
 
+  if (!message.isAdmin) {
+    await message.reply('Only administrators can run this command.');
+    return;
+  }
+
   const targetUser = message.mentionedJidList[0];
 
   if (!targetUser) {
@@ -44,6 +49,11 @@ Function({
 }, async (message, match) => {
   if (!message.isGroup) {
     await message.reply('This command is only available in Group Chats.');
+    return;
+  }
+
+  if (!message.isAdmin) {
+    await message.reply('Only administrators can run this command.');
     return;
   }
 
